@@ -1,9 +1,9 @@
 # City Explorer API
 
 **Author**: Evan Cheng  
-**Version**: 1.0.0
+**Version**: 1.3.0
 
-## Overview
+## Overviews
 
 The objective of this lab assignment is to develop a foundation for a comprehensive City Explorer application by constructing a custom API server. This server will act as a central hub, interfacing with various third-party APIs to aggregate and supply pertinent data about different urban locales to the City Explorer front-end.
 
@@ -16,6 +16,20 @@ Weather API Introduction: A significant addition to this project is the integrat
 ## Getting Started
 
 ## Architecture
+
+React.js: A JavaScript library for building user interfaces, chosen for its efficiency and community support.  
+
+Bootstrap: Utilized for styling and responsive design, allowing for a clean and modern user interface.  
+
+LocationIQ API: Provides the geo-location data used to fetch and display information about the cities.
+  
+Vite: Serves as the build tool and development environment, known for its fast hot module replacement.
+
+Axios: Used in React applications to make HTTP requests to external resources, such as APIs, enabling developers to easily fetch, post, and manage data from within their React components.
+
+WeatherbitIO API: Provides real time weather forecast data for locations.
+
+The Movie Database API: Provides movie information based off location data.
 
 ## Change Log
 
