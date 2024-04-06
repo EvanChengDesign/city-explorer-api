@@ -20,7 +20,7 @@ async function getMovies(req, res) {
     });
   }
 
-  const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_API_KEY}&query=${(location)}`;
+  const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_API_KEY}&query=${city}`;
 
   try {
     const response = await axios.get(url);
