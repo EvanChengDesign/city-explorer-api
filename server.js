@@ -4,12 +4,12 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 
-// Environment Variables
+
 const PORT = process.env.PORT || 3000;
 
-//App Initialization
-app.use(cors());
+
 const app = express();
+app.use(cors());
 
 const { getWeather } = require('./weather');
 const { getMovies } = require('./movies');
@@ -26,3 +26,5 @@ function startServer() {
 }
 
 startServer();
+
+

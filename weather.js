@@ -1,33 +1,23 @@
-'use strict';
+const axios = require('axios');
 
-require('dotenv').config();
-const fetch = require('node-fetch'); // Ensure you're using node-fetch if running in a Node environment
-
-class Forecast {
-  constructor(date, description) {
-    this.date = date;
-    this.description = description;
-  }
-}
-
+// Function to get weather data
 async function getWeather(req, res) {
-  try {
-    const city = req.query.city;
-    const weatherAPIkey = process.env.WEATHER_API_KEY;
-    let weatherUrl = `https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&key=${weatherAPIkey}&days=3`;
-    let reply = await fetch(weatherUrl);
-    let jsonData = await reply.json();
+    const city = req.query.city; 
+    const apiKey = process.env.WEATHER_API_KEY; 
+    const url = `https://api.weatherbit.io/v2.0/forecast/daily?key=${apiKey}&city=${city}`;
+    console.log(url);
+    try {
+      
+        const response = await fetch(url);
+        const decodedResponse = await response.json();
+        const data = decodedResponse.data; 
 
-    let forecasts = jsonData.data.map(forecastData => {
-      const description = `Low of ${forecastData.min_temp}, high of ${forecastData.max_temp} with ${forecastData.weather.description}`;
-      return new Forecast(forecastData.valid_date, description);
-    });
-
-    res.json(forecasts);
-  } catch (error) {
-    console.error('Error fetching weather data:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
+        res.json(data);
+    } catch (error) {
+       
+        console.error('Error fetching weather data:', error);
+        res.status(500).json({ message: 'Error fetching weather data' });
+    }
 }
 
 module.exports = { getWeather };
