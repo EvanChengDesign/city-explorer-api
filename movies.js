@@ -3,7 +3,7 @@ const { cache } = require('./cache');
 require('dotenv').config();
 
 async function getMovies(req, res) {
-  const { location } = req.query;
+  const location = req.query.city;
   if (!location) {
     return res.status(400).send({ error: 'Location is required' });
   }
@@ -20,7 +20,7 @@ async function getMovies(req, res) {
     });
   }
 
-  const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_API_KEY}&query=${(location)}`;
+  const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_API_KEY}&query=${location}`;
 
   try {
     const response = await axios.get(url);
